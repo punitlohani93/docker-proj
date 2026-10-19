@@ -1,10 +1,17 @@
-const http = require('http')
+// this is the sample app from fastify.dev
 
-const server = http.createServer((req, res) => {
-	console.log('request received')
-	res.end('hi lol', 'utf-8')
-})
+// Require the framework and instantiate it
+const fastify = require("fastify")({ logger: true });
 
-server.listen(3003, () => {
-	console.log('server listening on port 3003')
-})
+// Declare a route
+fastify.get("/", function handler(request, reply) {
+  reply.send({ hello: "world" });
+});
+
+// Run the server!
+fastify.listen({ port: 8080, host: "0.0.0.0" }, (err) => {
+  if (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+});

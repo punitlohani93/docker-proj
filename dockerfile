@@ -4,6 +4,8 @@ USER node
 
 WORKDIR /home/node/code
 
-COPY --chown=node:node index.js .
+COPY --chown=node:node . .
+
+RUN npm ci
 
 CMD ["node", "index.js"]
