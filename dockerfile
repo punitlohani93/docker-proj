@@ -1,4 +1,8 @@
-FROM node:26-alpine3.23
+FROM alpine:3.23
+
+RUN apk add --update nodejs npm
+
+RUN addgroup -S node && adduser -S node -G node
 
 USER node
 
